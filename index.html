@@ -3,29 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>TITAN COINS – Conversor de Dólar, Euro y Criptomonedas en Tiempo Real</title>
-  <meta name="description" content="Calcula el cambio de divisas y criptomonedas al instante con TITAN COINS. Precios en vivo de USD, COP, BTC, ETH y más. Gratis y profesional.">
-  <meta name="keywords" content="conversor divisas, precio dolar colombia, bitcoin a pesos, euro a pesos, titan coins, criptomonedas en vivo">
-  
-  <meta property="og:title" content="TITAN COINS – El Poder de tu Dinero">
-  <meta property="og:description" content="Conversor de divisas profesional con datos del mercado en tiempo real.">
-  <meta property="og:type" content="website">
+  <title>TITAN COINS – El Poder de tu Dinero</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
+
   <script type='text/javascript' src='//pl25714418.highperformanceformat.com/5c/41/55/5c415510444535316447a16447a16447.js'></script>
 
   <script>
-    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { titan: { 50: '#f0f9ff', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 900: '#0c4a6e' } } } } }
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            titan: { 50: '#f0f9ff', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 900: '#0c4a6e' }
+          }
+        }
+      }
+    }
   </script>
+
   <style>
     body { font-family: 'Inter', system-ui, Arial; transition: background-color 0.3s; }
     .ad-placeholder { background:#f1f5f9; border:2px dashed #cbd5e1; display:flex; align-items:center; justify-content:center; color:#64748b; font-weight: bold; text-transform: uppercase; }
     .dark .ad-placeholder { background:#1e293b; border-color:#334155; color:#94a3b8; }
     .dark body { background-color: #020617; color: #f1f5f9; }
+    .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+    .dark .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .animate-result { animation: fadeIn 0.4s ease-out; }
   </style>
@@ -39,11 +44,17 @@
         <h1 class="text-2xl font-black tracking-tighter text-titan-700 dark:text-titan-500">TITAN<span class="text-slate-400">COINS</span></h1>
     </div>
     
-    <div class="w-full md:w-[468px] h-[60px] overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-        <script type="text/javascript">
-            atOptions = { 'key' : '5cac544db9e43b65004894f7b05a9675', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
-        </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/5cac544db9e43b65004894f7b05a9675/invoke.js"></script>
+    <div class="w-full md:w-[468px] h-[60px] flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-800 rounded-lg">
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '5cac544db9e43b65004894f7b05a9675',
+          'format' : 'iframe',
+          'height' : 60,
+          'width' : 468,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/5cac544db9e43b65004894f7b05a9675/invoke.js"></script>
     </div>
 
     <button id="darkModeBtn" class="p-2.5 rounded-2xl border dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
@@ -53,167 +64,225 @@
 </header>
 
 <main class="max-w-6xl mx-auto px-4 mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
   <section class="lg:col-span-8 space-y-6">
     
-    <div class="text-center md:text-left mb-4">
-        <h2 class="text-sm font-black text-titan-600 uppercase tracking-widest">Mercado de Divisas Hoy</h2>
-        <p class="text-xs text-slate-400">Consulta el cambio oficial y precios de criptomonedas</p>
-    </div>
-
-    <div class="grid grid-cols-3 gap-4 mb-6">
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-3xl border dark:border-slate-800 text-center shadow-sm">
-            <p class="text-[10px] font-bold text-slate-400 uppercase">BTC/USD</p>
-            <p id="price-BTC" class="text-sm font-black text-titan-600">...</p>
-        </div>
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-3xl border dark:border-slate-800 text-center shadow-sm">
-            <p class="text-[10px] font-bold text-slate-400 uppercase">ETH/USD</p>
-            <p id="price-ETH" class="text-sm font-black text-titan-600">...</p>
-        </div>
-        <div class="bg-white dark:bg-slate-900 p-4 rounded-3xl border dark:border-slate-800 text-center shadow-sm">
-            <p class="text-[10px] font-bold text-slate-400 uppercase">SOL/USD</p>
-            <p id="price-SOL" class="text-sm font-black text-titan-600">...</p>
-        </div>
-    </div>
-
     <div id="captureArea" class="bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl p-8 border dark:border-slate-800 relative overflow-hidden">
       <h2 class="text-xl font-bold mb-8 flex items-center gap-3">
-        <span class="w-2 h-6 bg-titan-600 rounded-full"></span> Conversor de Monedas TITAN
+        <span class="w-2 h-6 bg-titan-600 rounded-full"></span>
+        TITAN Crypto & Fiat Converter
       </h2>
+
       <div class="space-y-6">
         <div>
-          <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-3 ml-1">Cantidad a convertir:</label>
+          <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-3 ml-1">Monto:</label>
           <input id="amount" type="number" value="1" autofocus class="w-full p-5 bg-slate-50 dark:bg-slate-800/50 border-none rounded-2xl text-3xl font-black focus:ring-2 focus:ring-titan-500 outline-none transition-all">
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <select id="from" class="w-full p-4 bg-slate-50 dark:bg-slate-800 border dark:border-slate-700 rounded-2xl font-bold cursor-pointer"></select>
-          <select id="to" class="w-full p-4 bg-slate-50 dark:bg-slate-800 border dark:border-slate-700 rounded-2xl font-bold cursor-pointer"></select>
+          <select id="from" class="w-full p-4 bg-slate-50 dark:bg-slate-800 border dark:border-slate-700 rounded-2xl font-bold appearance-none cursor-pointer"></select>
+          <select id="to" class="w-full p-4 bg-slate-50 dark:bg-slate-800 border dark:border-slate-700 rounded-2xl font-bold appearance-none cursor-pointer"></select>
         </div>
+
         <div class="flex flex-col sm:flex-row gap-4 items-center pt-6">
           <button id="swapBtn" class="w-full sm:w-auto px-8 py-4 bg-slate-100 dark:bg-slate-800 rounded-2xl hover:bg-slate-200 transition font-black text-sm uppercase">↔ Invertir</button>
-          <button id="convertBtn" class="w-full sm:flex-1 py-4 bg-titan-600 hover:bg-titan-700 text-white rounded-2xl font-black text-xl transition-all shadow-xl shadow-titan-600/40">CALCULAR CAMBIO</button>
+          <button id="convertBtn" class="w-full sm:flex-1 py-4 bg-titan-600 hover:bg-titan-700 text-white rounded-2xl font-black text-xl transition-all shadow-xl shadow-titan-600/40">EJECUTAR CAMBIO</button>
         </div>
+
         <div id="resultBox" class="mt-8 p-8 bg-gradient-to-br from-titan-600 to-titan-800 rounded-[2rem] text-white hidden">
           <div id="result" class="text-3xl font-black break-words animate-result">—</div>
           <div id="rateInfo" class="text-sm opacity-80 mt-3 font-medium"></div>
+          
           <div class="flex gap-3 mt-6">
-              <button id="shareWA" class="flex-1 py-3 bg-green-500 hover:bg-green-600 rounded-xl text-xs font-bold transition">Enviar a WhatsApp</button>
-              <button id="downloadImg" class="flex-1 py-3 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-bold transition">Guardar Imagen</button>
+              <button id="shareWA" class="flex-1 py-3 bg-green-500 hover:bg-green-600 rounded-xl text-xs font-bold transition">WhatsApp</button>
+              <button id="downloadImg" class="flex-1 py-3 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-bold transition">Descargar Imagen</button>
           </div>
         </div>
-        <div id="loading" class="text-center py-6 text-titan-600 font-black hidden animate-pulse">Obteniendo datos de mercado...</div>
+        <div id="loading" class="text-center py-6 text-titan-600 font-black hidden animate-pulse">Consultando mercado...</div>
       </div>
+    </div>
+
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border dark:border-slate-800 shadow-sm">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-sm font-black text-slate-400 uppercase tracking-widest">Actividad Reciente</h3>
+            <button id="clearHistory" class="text-[10px] font-bold text-red-400 uppercase">Borrar Historial</button>
+        </div>
+        <div id="historyList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
     </div>
   </section>
 
   <aside class="lg:col-span-4 hidden lg:block space-y-6">
-    <div class="ad-placeholder h-[600px] rounded-[2.5rem] text-sm overflow-hidden">
-        <script type="text/javascript">
-            atOptions = { 'key' : 'f054a13f01c87707e53f1737e8c3f4e2', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
-        </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/f054a13f01c87707e53f1737e8c3f4e2/invoke.js"></script>
+    <div class="w-full h-[600px] rounded-[2.5rem] overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+      <script type="text/javascript">
+        atOptions = {
+          'key' : 'f054a13f01c87707e53f1737e8c3f4e2',
+          'format' : 'iframe',
+          'height' : 600,
+          'width' : 160,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/f054a13f01c87707e53f1737e8c3f4e2/invoke.js"></script>
+    </div>
+    <div class="p-8 bg-titan-900 rounded-[2.5rem] text-white shadow-xl border border-titan-700">
+        <h4 class="font-black text-xl mb-4 italic text-titan-500">TITAN PRO</h4>
+        <p class="text-sm opacity-70 italic">"La mejor forma de predecir el futuro financiero es creándolo."</p>
     </div>
   </aside>
 </main>
 
 <footer class="mt-20 py-12 border-t dark:border-slate-800 bg-white dark:bg-slate-950">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-8 text-center">
-    <p class="text-xs text-slate-500 max-w-2xl italic">Usa nuestro conversor de monedas para saber el precio del dólar, euro y las principales criptomonedas hoy. Datos actualizados mediante API profesional.</p>
+  <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-8">
     <div class="w-full md:w-[728px] h-24 overflow-hidden rounded-xl bg-slate-100 flex items-center justify-center">
-        <script type="text/javascript">
-            atOptions = { 'key' : '28542126', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-        </script>
-        <script type="text/javascript" src="https://www.highperformanceformat.com/28542126/invoke.js"></script>
+      <script type="text/javascript">
+        atOptions = {
+          'key' : '28542126',
+          'format' : 'iframe',
+          'height' : 90,
+          'width' : 728,
+          'params' : {}
+        };
+      </script>
+      <script type="text/javascript" src="https://www.highperformanceformat.com/28542126/invoke.js"></script>
     </div>
-    <div class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">© 2026 TITAN COINS — ANALÍTICA FINANCIERA</div>
+    <div class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+        © 2026 TITAN COINS — DATA EN TIEMPO REAL
+    </div>
   </div>
 </footer>
 
 <div id="interstitial" class="fixed inset-0 hidden items-center justify-center bg-slate-950/95 backdrop-blur-xl z-50 p-6">
-  <div class="bg-white dark:bg-slate-900 rounded-[3rem] p-10 w-full max-w-md text-center shadow-2xl border dark:border-slate-800">
-      <h3 class="text-xl font-black mb-2 dark:text-white uppercase tracking-tighter">Sincronizando Mercado</h3>
-      <p class="text-xs text-slate-400 mb-6">Verificando tasa de cambio: <span id="timer" class="text-titan-500 font-black">5</span>s</p>
-      <div class="ad-placeholder w-full h-56 rounded-2xl mb-8 text-[10px]">Espacio Publicitario</div>
-      <button id="closeAdBtn" disabled class="w-full py-5 bg-slate-200 text-slate-400 rounded-2xl font-black text-lg transition-all cursor-not-allowed uppercase italic">Procesando...</button>
+  <div class="bg-white dark:bg-slate-900 rounded-[3rem] p-10 w-full max-w-md text-center shadow-2xl">
+      <h3 class="text-2xl font-black mb-4 dark:text-white uppercase tracking-tighter">Sincronizando Divisas</h3>
+      <div class="ad-placeholder w-full h-56 rounded-2xl mb-8">Anuncio Intersticial</div>
+      <button id="closeAdBtn" class="w-full py-5 bg-titan-600 text-white rounded-2xl font-black text-lg">VER RESULTADO</button>
   </div>
 </div>
 
 <script>
 const API_URL = 'https://open.er-api.com/v6/latest/';
-const fromSelect = document.getElementById('from'), toSelect = document.getElementById('to'), amountInput = document.getElementById('amount');
-const SYMBOLS = { USD: 'Dólar USA', EUR: 'Euro', COP: 'Peso Colombiano', MXN: 'Peso Mexicano', BTC: 'Bitcoin', ETH: 'Ethereum', SOL: 'Solana' };
-const FLAGS = { USD:'🇺🇸', EUR:'🇪🇺', COP:'🇨🇴', MXN:'🇲🇽', BTC:'₿', ETH:'Ξ', SOL:'◎' };
+const fromSelect = document.getElementById('from');
+const toSelect = document.getElementById('to');
+const amountInput = document.getElementById('amount');
+const convertBtn = document.getElementById('convertBtn');
+const swapBtn = document.getElementById('swapBtn');
+const resultEl = document.getElementById('result');
+const resultBox = document.getElementById('resultBox');
+const rateInfo = document.getElementById('rateInfo');
+const loadingEl = document.getElementById('loading');
+const historyList = document.getElementById('historyList');
 
-async function fetchLivePrices() {
-    try {
-        const res = await fetch(`${API_URL}USD`);
-        const data = await res.json();
-        if (data.result === "success") {
-            document.getElementById('price-BTC').textContent = `$${(1 / data.rates.BTC).toLocaleString(undefined, {maximumFractionDigits:0})}`;
-            document.getElementById('price-ETH').textContent = `$${(1 / data.rates.ETH).toLocaleString(undefined, {maximumFractionDigits:0})}`;
-            document.getElementById('price-SOL').textContent = `$${(1 / data.rates.SOL).toLocaleString(undefined, {maximumFractionDigits:2})}`;
-        }
-    } catch (e) { console.log("Error precios"); }
-}
+const SYMBOLS = {
+  USD: 'Dólar USA', EUR: 'Euro', COP: 'Peso Colombiano', MXN: 'Peso Mexicano',
+  ARS: 'Peso Argentino', BRL: 'Real Brasileño', BTC: 'Bitcoin', ETH: 'Ethereum',
+  USDT: 'Tether', BNB: 'BNB', SOL: 'Solana'
+};
+const FLAGS = {
+  USD:'🇺🇸', EUR:'🇪🇺', COP:'🇨🇴', MXN:'🇲🇽', ARS:'🇦🇷', BRL:'🇧🇷', BTC:'₿', ETH:'Ξ', USDT:'₮', BNB:'🔶', SOL:'◎'
+};
 
 function init(){
-  Object.keys(SYMBOLS).forEach(code => { fromSelect.add(new Option(`${FLAGS[code]} ${code} — ${SYMBOLS[code]}`, code)); toSelect.add(new Option(`${FLAGS[code]} ${code} — ${SYMBOLS[code]}`, code)); });
-  fromSelect.value = 'USD'; toSelect.value = 'COP';
+  Object.keys(SYMBOLS).forEach(code => {
+    fromSelect.add(new Option(`${FLAGS[code]} ${code} — ${SYMBOLS[code]}`, code));
+    toSelect.add(new Option(`${FLAGS[code]} ${code} — ${SYMBOLS[code]}`, code));
+  });
+  fromSelect.value = 'USD';
+  toSelect.value = 'COP';
   updateHistoryDisplay();
-  fetchLivePrices();
+  
+  if(localStorage.theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.getElementById('themeIcon').textContent = '☀️';
+  }
 }
 
 function updateHistoryDisplay() {
     const history = JSON.parse(localStorage.getItem('titan_history') || '[]');
-    document.getElementById('historyList').innerHTML = history.map(item => `
+    if (history.length === 0) {
+        historyList.innerHTML = '<p class="text-slate-400 text-sm italic col-span-2 text-center py-4">Sin actividad.</p>';
+        return;
+    }
+    historyList.innerHTML = history.map(item => `
         <div class="p-5 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border dark:border-slate-800 animate-result">
-            <div class="flex justify-between text-[10px] font-black text-slate-400 mb-2 uppercase"><span>${item.time}</span> <span class="text-titan-500">${item.from} ➔ ${item.to}</span></div>
+            <div class="flex justify-between text-[10px] font-black text-slate-400 mb-2 uppercase">
+                <span>${item.time}</span>
+                <span class="text-titan-500">${item.from} ➔ ${item.to}</span>
+            </div>
             <div class="text-lg font-black break-words text-slate-700 dark:text-slate-200">${item.res}</div>
-        </div>`).join('') || '<p class="text-slate-400 text-sm italic py-4 col-span-2 text-center">Sin actividad reciente.</p>';
+        </div>
+    `).join('');
 }
 
-document.getElementById('convertBtn').onclick = async () => {
+convertBtn.onclick = async () => {
   const amount = parseFloat(amountInput.value) || 0;
   if (amount <= 0) return;
+
+  const from = fromSelect.value;
+  const to = toSelect.value;
+
   document.getElementById('interstitial').classList.replace('hidden', 'flex');
-  let timeLeft = 5;
-  const timerInterval = setInterval(() => {
-      timeLeft--;
-      document.getElementById('timer').textContent = timeLeft;
-      if(timeLeft <= 0) {
-          clearInterval(timerInterval);
-          const btn = document.getElementById('closeAdBtn');
-          btn.disabled = false;
-          btn.textContent = "VER RESULTADO";
-          btn.classList.replace('bg-slate-200', 'bg-titan-600');
-          btn.classList.replace('text-slate-400', 'text-white');
-          btn.classList.replace('cursor-not-allowed', 'cursor-pointer');
-      }
-  }, 1000);
+  loadingEl.classList.remove('hidden');
+  resultBox.classList.add('hidden');
+
   try {
-    const res = await fetch(`${API_URL}${fromSelect.value}`);
+    const res = await fetch(`${API_URL}${from}`);
     const data = await res.json();
+    
     if (data.result === "success") {
-      const rate = data.rates[toSelect.value], total = amount * rate;
-      const isCrypto = ['BTC', 'ETH', 'SOL'].includes(toSelect.value);
-      const formattedTotal = isCrypto ? total.toFixed(8) : total.toLocaleString(undefined, {minimumFractionDigits: 2});
-      document.getElementById('result').textContent = `${amount.toLocaleString()} ${fromSelect.value} = ${formattedTotal} ${toSelect.value}`;
-      document.getElementById('rateInfo').textContent = `1 ${fromSelect.value} = ${rate.toFixed(isCrypto ? 8 : 4)} ${toSelect.value}`;
+      const rate = data.rates[to];
+      const total = amount * rate;
+      
+      const isCrypto = ['BTC', 'ETH', 'SOL'].includes(to);
+      const formattedTotal = isCrypto ? total.toFixed(8) : total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+      const resText = `${amount.toLocaleString()} ${from} = ${formattedTotal} ${to}`;
+      resultEl.textContent = resText;
+      rateInfo.textContent = `1 ${from} = ${rate.toFixed(isCrypto ? 8 : 4)} ${to}`;
+
       let history = JSON.parse(localStorage.getItem('titan_history') || '[]');
-      history.unshift({ from: fromSelect.value, to: toSelect.value, res: `${formattedTotal} ${toSelect.value}`, time: new Date().toLocaleTimeString() });
-      localStorage.setItem('titan_history', JSON.stringify(history.slice(0, 4)));
+      history.unshift({ from, to, res: `${formattedTotal} ${to}`, time: new Date().toLocaleTimeString() });
+      localStorage.setItem('titan_history', JSON.stringify(history.slice(0, 6)));
       updateHistoryDisplay();
     }
-  } catch (e) { document.getElementById('result').textContent = "Error de Red"; }
+  } catch (e) { 
+      resultEl.textContent = "Error de Red"; 
+  }
+  loadingEl.classList.add('hidden');
 };
 
-document.getElementById('shareWA').onclick = () => { 
-    const text = `🔱 TITAN COINS: He calculado que ${document.getElementById('result').textContent}. Mira el precio en vivo aquí:\n${window.location.href}`;
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`); 
+document.getElementById('clearHistory').onclick = () => {
+    localStorage.removeItem('titan_history');
+    updateHistoryDisplay();
 };
 
-document.getElementById('closeAdBtn').onclick = () => { document.getElementById('interstitial').classList.replace('flex', 'hidden'); document.getElementById('resultBox').classList.remove('hidden'); };
-document.getElementById('darkModeBtn').onclick = () => { document.documentElement.classList.toggle('dark'); };
-document.getElementById('swapBtn').onclick = () => [fromSelect.value, toSelect.value] = [toSelect.value, fromSelect.value];
+document.getElementById('shareWA').onclick = () => {
+    const text = `🔱 TITAN COINS: ${resultEl.textContent}`;
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`);
+};
+
+document.getElementById('downloadImg').onclick = () => {
+    html2canvas(document.getElementById('captureArea')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'TitanCoins.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+};
+
+document.getElementById('closeAdBtn').onclick = () => {
+    document.getElementById('interstitial').classList.replace('flex', 'hidden');
+    resultBox.classList.remove('hidden');
+};
+
+document.getElementById('darkModeBtn').onclick = () => {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.theme = isDark ? 'dark' : 'light';
+    document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+};
+
+swapBtn.onclick = () => [fromSelect.value, toSelect.value] = [toSelect.value, fromSelect.value];
+
 init();
 </script>
 </body>
